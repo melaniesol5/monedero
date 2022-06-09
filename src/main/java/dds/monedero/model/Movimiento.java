@@ -8,7 +8,6 @@ public abstract class Movimiento {
   // En su lugar siempre usen numeros de precision arbitraria o punto fijo, como BigDecimal en Java y similares
   // De todas formas, NO es necesario modificar ésto como parte de este ejercicio. 
   private double monto;
-  private boolean esDeposito;
 
   public Movimiento(LocalDate fecha, double monto) {
     this.fecha = fecha;
@@ -46,11 +45,5 @@ public abstract class Movimiento {
     cuenta.agregarMovimiento(this);
   }
 
-  public double calcularValor(Cuenta cuenta) {
-    if (isDeposito()) {
-      return cuenta.getSaldo() + getMonto();
-    } else {
-      return cuenta.getSaldo() - getMonto();
-    }
-  }
+  public abstract double calcularValor(Cuenta cuenta);
 }
