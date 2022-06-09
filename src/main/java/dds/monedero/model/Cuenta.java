@@ -25,14 +25,14 @@ public class Cuenta {
   public void poner(double cuanto) {
     validarMontoIngresado(cuanto);
     validarCantidadDeMovimientosDiarios();
-    new Movimiento(LocalDate.now(), cuanto, true).agregateA(this);
+    new Deposito(LocalDate.now(), cuanto).agregateA(this);
   }
 
   public void sacar(double cuanto) {
     validarMontoIngresado(cuanto);
     validarMontoDisponible(cuanto);
     validarExtraccionMenorALimiteDiario(cuanto);
-    new Movimiento(LocalDate.now(), cuanto, false).agregateA(this);
+    new Extraccion(LocalDate.now(), cuanto).agregateA(this);
   }
 
   public void agregarMovimiento(Movimiento movimiento) {
